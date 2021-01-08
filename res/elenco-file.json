@@ -1,0 +1,192 @@
+{
+  "2008": {
+    "corti": {},
+    "files": [
+      "libro.pdf"
+    ]
+  },
+  "2010": {
+    "corti": [
+      "01-Golem.pdf",
+      "02-La-Notte-di-Yig.pdf",
+      "03-Collector's-Item.pdf",
+      "04-Faro-d'Argento.pdf",
+      "05-Io-sto-in-crisi.pdf",
+      "06-La-Lettera.pdf",
+      "07-L'Orrenda-Discesa-di-Beowulf.pdf"
+    ],
+    "files": [
+      "libro.pdf"
+    ]
+  },
+  "2011": {
+    "corti": [
+      "01-Alla-luce-del-buio.pdf",
+      "02-La-luna-degli-assassini.pdf",
+      "03-Le-metamorfosi.pdf",
+      "04-Rockstage-Tour-esplosivo.pdf",
+      "05-La-danza-delle-ombre.pdf",
+      "06-Il-forestiero.pdf",
+      "07-L'Albero-di-fuoco.pdf",
+      "08-Muteki-chojin-hyperion.pdf"
+    ],
+    "files": [
+      "bando.pdf",
+      "libro.pdf"
+    ]
+  },
+  "2012": {
+    "corti": [
+      "01-Grand-Clochard-La-sfida-per-il-carrello-d'oro.pdf",
+      "02-Il-tramonto-degli-dei.pdf",
+      "03-U-Carcamannu.pdf",
+      "04-La-sfida-degli-Immortali.pdf",
+      "05-La-Rivincita.pdf",
+      "06-Fi'a'za-e-il-Venditore-di-Tappeti.pdf",
+      "07-Viatico.pdf"
+    ],
+    "files": [
+      "bando.pdf"
+    ]
+  },
+  "2013": {
+    "corti": [
+      "01-Fuga-Infernale.pdf",
+      "02-KraanQuest.pdf",
+      "03-Fuga-nella-notte.pdf",
+      "04-L'Unicorno-dei-ghiacci.pdf",
+      "05-Notte-di-indagini.pdf",
+      "06-Trappola-nelle-tenebre.pdf",
+      "07-Il-primo-volo-del-nibbio.pdf",
+      "08-Ultimo-giorno-di-festa.pdf",
+      "09-La-voragine-della-morte.pdf"
+    ],
+    "files": [
+      "libro.pdf"
+    ]
+  },
+  "2014": {
+    "corti": {},
+    "files": [
+      "libro.pdf"
+    ]
+  },
+  "2015": {
+    "corti": [
+      "01-E-un-gioco-da-ragazzi.pdf",
+      "02-In-fuga-tra-le-montagne.pdf",
+      "03-La-locanda-nella-nebbia.pdf",
+      "04-Spettromante.pdf",
+      "05-Re-Morto.pdf",
+      "06-La-nebbia.pdf",
+      "07-In-cerca-davventura.pdf",
+      "08-E-venne-il-giorno.pdf",
+      "09-Fantasmi.pdf",
+      "11-La-locanda-nella-foresta.pdf",
+      "12-Trappola-nella-nebbia.pdf",
+      "13-Legami-di-sangue.pdf"
+    ],
+    "files": [
+      "bando.pdf",
+      "libro.pdf"
+    ]
+  },
+  "2016": {
+    "corti": [
+      "01-L'agone-degli-erranti.pdf",
+      "02-Il-Ritorno-della-Bestia.pdf",
+      "03-True-Path.pdf",
+      "04-Chronium.pdf",
+      "05-Fish-and-Chip.pdf",
+      "06-Il-peso-della-cultura.pdf",
+      "07-Vivi-e-lascia-risorgere.pdf",
+      "08-Avventura-nella-foresta.pdf",
+      "09-Canto-elfico.pdf",
+      "10-11-09.pdf",
+      "11-All'ombra-del-Grande-Nur.pdf"
+    ],
+    "files": [
+      "bando.pdf",
+      "libro.pdf"
+    ]
+  },
+  "2017": {
+    "corti": [
+      "01-Cuore-di-Ferro.pdf",
+      "03-Sistema-Enigma-Londra.pdf",
+      "04-Apocalisse.pdf",
+      "05-Il-Palazzinaro.pdf",
+      "06-La-Prova-della-Negromante.pdf",
+      "07-Fermate-Monna-Lisa.pdf",
+      "08-Il-Senza-Pietà.pdf",
+      "11-Firenze-canzone-triste.pdf",
+      "12-Invasione.pdf"
+    ],
+    "files": [
+      "libro.pdf"
+    ]
+  },
+  "2018": {
+    "corti": [
+      "01-Giorno-prima-degli-Esami.pdf",
+      "02-Direttiva-9.pdf",
+      "03-Ultima-speranza-ad-Alessandria.pdf",
+      "04-Io-non-brucerò.pdf",
+      "05-Nella-bocca-del-leone.pdf",
+      "06-È-ora-che-tu-sappia.pdf",
+      "07-Il-mondo-dei-libri.pdf",
+      "08-Il-giorno-del-librogame.pdf",
+      "09-Cupe-vampe.pdf"
+    ],
+    "files": [
+      "bando.pdf"
+    ]
+  },
+  "2019": {
+    "corti": [
+      "01-Sopravvivere-sottoterra.pdf",
+      "02-Alla-fine-della-terra.pdf",
+      "03-Il-destino-di-Dardleb.pdf",
+      "04-Sotto-terra.pdf",
+      "05-Macchine-mortali.pdf",
+      "06-La-Grande-Opera.pdf"
+    ],
+    "files": [
+      "bando.pdf"
+    ]
+  },
+  "2020": {
+    "corti": [
+      "01-La-festa.pdf",
+      "02-Fuga-dal-castello-del-drago.pdf",
+      "03-Venti-Solari.pdf",
+      "04-La-Rosa-dei-Venti.pdf",
+      "05-20-punti-in-20-minuti.pdf",
+      "06-Il-ventilatore-dell'Ikrea.pdf",
+      "07-Vetro-di-Città.pdf",
+      "08-Paziente-n20.pdf",
+      "09-Io-sto-in-crisi-2.pdf",
+      "10-Primo-ed-ultimo-Viaggio.pdf",
+      "11-Alla-ricerca-del-punto-G20.pdf",
+      "12-Origins-Prologo-della-fine.pdf",
+      "13-Il-labirinto-dei-cacciatori-di-venti.pdf",
+      "14-2020-Speedball.pdf",
+      "15-Che-bei-soggetti.pdf",
+      "16-Osseans-wanderr.pdf",
+      "17-Solcaonde.pdf",
+      "18-Sfide-eoliche.pdf",
+      "19-La-festa.pdf",
+      "20-20:20.pdf"
+    ],
+    "files": [
+      "bando.pdf"
+    ]
+  },
+  "2021": {
+    "corti": {},
+    "files": [
+      "bando.pdf",
+      "preformattati"
+    ]
+  }
+}
