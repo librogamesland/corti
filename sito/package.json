@@ -4,6 +4,7 @@
   "description": "Sito web del concorso \"I corti di Librogame's Land\"",
   "main": "index.js",
   "scripts": {
+    "dev": "parcel src/index.html",
     "build": "parcel build src/index.html --public-url /corti/sito/dist/ && cp ./dist/index.html ../",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
