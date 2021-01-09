@@ -1,0 +1,184 @@
+
+html,body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+
+}
+
+#ultime-news {
+    float:left;
+    margin-right: 30px;
+    width: 30vw;
+}
+
+#onboarding img {
+    max-width: 85%;
+    width: 88vh;
+    margin-bottom: 20vh;
+}
+
+#onboarding {
+    background-image:url(background.jpg);
+    background-repeat:repeat;
+    background-position: center top;
+
+}
+
+#home {
+    background-color: #f1f1f1;
+}
+
+#home iframe {
+    float: left;
+    margin-left: 30px;
+}
+
+#home, #onboarding {
+    justify-content: center; width: 100%;
+}
+
+
+.page {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    align-items: center;
+    display: flex;
+    min-height: 90vh;
+}
+
+
+
+
+
+
+
+
+
+h1 {
+    color: #333;
+    font-family: arial, sans-serif;
+    margin: 1em auto;
+    width: 80%;
+  }
+  
+  .tabordion {
+    color: #333;
+    display: block;
+    font-family: arial, sans-serif;
+    margin: auto;
+    position: relative;
+    width: 80%;
+  }
+  
+  .tabordion input[name="sections"] {
+    position: absolute;
+    visibility: hidden;
+
+  }
+  
+  .tabordion section {
+    display: block;
+  }
+  
+  .tabordion section label {
+    background: #ccc;
+    border:1px solid #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 15px 20px;
+    position: relative;
+    width: 180px;
+    z-index:100;
+  }
+  
+  .tabordion section article {
+    display: none;
+    left: 230px;
+    min-width: 300px;
+    padding: 0 0 0 21px;
+    position: absolute;  
+    top: 0;
+  }
+  
+  .tabordion section article:after {
+    background-color: #ccc;
+    bottom: 0;
+    content: "";
+    display: block;
+    left:-229px;
+    position: absolute;
+    top: 0;
+    width: 220px;
+    z-index:1;
+  }
+  
+  .tabordion input[name="sections"]:checked + label { 
+    background: #eee;
+    color: #bbb;
+  }
+  
+  .tabordion input[name="sections"]:checked ~ article {
+    display: block;
+  }
+  
+  
+  @media (max-width: 533px) {
+    
+    h1 {
+      width: 100%;
+    }
+  
+    .tabordion {
+      width: 100%;
+    }
+    
+    .tabordion section label {
+      font-size: 1em;
+      width: 160px;
+    }  
+  
+   .tabordion section article {
+      left: 200px;
+      min-width: 270px;
+    } 
+    
+    .tabordion section article:after {
+      background-color: #ccc;
+      bottom: 0;
+      content: "";
+      display: block;
+      left:-199px;
+      position: absolute;
+      top: 0;
+      width: 200px;
+  
+    }  
+    
+  }
+  
+  
+  @media (max-width: 768px) {
+    h1 {
+      width: 96%;
+    }
+  
+    .tabordion {
+      width: 96%;
+    }
+  }
+  
+  
+  @media (min-width: 1366px) {
+    h1 {
+      width: 70%;
+    }
+  
+    .tabordion {
+      width: 70%;
+    }
+  }
+  
+  
