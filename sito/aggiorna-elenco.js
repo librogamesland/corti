@@ -9,7 +9,7 @@ const elenco = {}
 // Filtra le cartelle, prendi solo quelle che iniziano con 2
 fs.readdirSync(path.dirname(__dirname)).filter(anno => anno.startsWith('2') ).forEach(anno => {
     // Elenca i corti se la cartella esiste
-    let corti = {}
+    let corti = []
     try {
         corti = fs.readdirSync(path.join(path.dirname(__dirname), anno, 'corti'))
     }catch(e){}
