@@ -1,0 +1,21 @@
+{
+  "name": "lgl-archivio-corti",
+  "version": "1.0.0",
+  "description": "Sito web del concorso \"I corti di Librogame's Land\"",
+  "main": "index.js",
+  "scripts": {
+    "build": "parcel build src/index.html --public-url /corti/sito/dist/ && cp ./dist/index.html ../",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lgl",
+    "cortilgl",
+    "corti",
+    "librogame"
+  ],
+  "author": "Luca Fabbian",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "parcel": "^1.12.4"
+  }
+}
