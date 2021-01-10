@@ -20,8 +20,8 @@ html,body {
 }
 
 #navbar {
-  max-width: 65%;
-  width: 70vh;
+  max-width: calc(410px + 15vh);
+  width: 65%;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 3px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -37,7 +37,7 @@ html,body {
 #navbar a {
   flex-grow: 1;
   padding: 2em;
-  flex-basis: 50px;
+  flex-basis: 20px;
 }
 
 #ultime-news p {
@@ -68,13 +68,47 @@ html,body {
 
 .page {
     padding-top: 5vh;
-    padding-bottom: 5vh;
+    padding-bottom: 8vh;
     align-items: center;
     display: flex;
     flex-direction: column;
-    min-height: 90vh;
 }
 
+#footer {
+  min-height: calc(15vh - 7rem);
+  height: 3rem;
+  background-color: #155cac;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  color: #fff;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+}
+
+#footer > * {
+ /* width: calc(30vw + 500px) !important;*/
+}
+
+
+@media screen and (orientation:landscape) { 
+  .page {
+    padding-bottom: 5vh;
+    min-height: 90vh;
+  }
+}
+
+@media screen and (orientation:portrait) { 
+  #archivio {
+    min-height: 75vh;
+    padding-bottom: 5vh;
+  }
+
+  #onboarding > img {
+    margin-bottom: 7vh;
+  }
+}
 
 
 
@@ -151,10 +185,8 @@ h1 {
 
 .tabordion {
   color: #333;
-  display: block;
   font-family: arial, sans-serif;
   margin: auto;
-  position: relative;
   width: 80%;
   flex-grow: 1;
 }
@@ -167,9 +199,15 @@ h1 {
 
 .tabordion section {
   display: block;
+  float: right;
 }
 
-.tabordion section label {
+.tabordion .sections {
+  display: block;
+
+  float: right;
+}
+.tabordion .labels label {
   background: #ccc;
   border:1px solid #fff;
   cursor: pointer;
@@ -177,9 +215,6 @@ h1 {
   font-size: 1.2em;
   font-weight: bold;
   padding: 15px 20px;
-  position: relative;
-  width: 180px;
-  z-index:100;
 }
 
 .tabordion section article {
@@ -187,21 +222,28 @@ h1 {
   left: 230px;
   min-width: calc(30vw + 248px);
   padding: 0 0 0 21px;
-  position: absolute;  
-  top: 0;
+  float: right;
+}
+
+.tabordion .labels {
+  float: left;
+  width: 180px;
+  display: block;
 }
 
 .tabordion section article:after {
   background-color: #ccc;
   bottom: 0;
   content: "";
-  display: block;
+  display: inline-block;
   left:-229px;
-  position: absolute;
+  position: relative;
   top: 0;
   width: 220px;
   z-index:1;
   margin-bottom: 70px;
+  clear: both;
+
 }
 
 .tabordion input[name="sections"]:checked + label { 
@@ -210,7 +252,7 @@ h1 {
 }
 
 .tabordion input[name="sections"]:checked ~ article {
-  display: block;
+  display: inline-block;
 }
 
 
@@ -231,7 +273,7 @@ h1 {
     background-color: #ccc;
     bottom: 0;
     content: "";
-    display: block;
+    display: inline-block;
     left:-199px;
     position: absolute;
     top: 0;
