@@ -4,7 +4,7 @@ html,body {
     padding: 0;
     scroll-behavior: smooth;
     font-family: arial, sans-serif;
-
+    font-size: 110%;
 }
 
 #ultime-news {
@@ -13,11 +13,37 @@ html,body {
     width: 30vw;
 }
 
-#onboarding img {
+#onboarding > img {
     max-width: 85%;
     width: 88vh;
-    margin-bottom: 20vh;
+    margin-bottom: 10vh;
 }
+
+#navbar {
+  max-width: 65%;
+  width: 70vh;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  display: flex;
+  text-align: center;
+}
+
+#navbar img {
+  width: 95%;
+  padding-bottom: 0.8em;
+  opacity: 0.88;
+}
+#navbar a {
+  flex-grow: 1;
+  padding: 2em;
+  flex-basis: 50px;
+}
+
+#ultime-news p {
+  line-height: 1.34em;
+}
+
 
 #onboarding {
     background-image:url(background.jpg);
@@ -35,7 +61,7 @@ html,body {
     margin-left: 30px;
 }
 
-#home, #onboarding {
+#onboarding {
     justify-content: center; width: 100%;
 }
 
@@ -58,12 +84,10 @@ html,body {
 
 
 
-
 h1 {
     color: #333;
     font-family: arial, sans-serif;
     margin: 1em 0px;
-    width: 80%;
     line-height: 1em;
     vertical-align: middle;
 
@@ -84,6 +108,10 @@ h1 {
   vertical-align: middle;
   line-height: 1em;
 
+}
+
+#archivio > * {
+  width: calc(30vw + 500px) !important;
 }
 
 
@@ -157,7 +185,7 @@ h1 {
 .tabordion section article {
   display: none;
   left: 230px;
-  min-width: 300px;
+  min-width: calc(30vw + 248px);
   padding: 0 0 0 21px;
   position: absolute;  
   top: 0;
@@ -173,6 +201,7 @@ h1 {
   top: 0;
   width: 220px;
   z-index:1;
+  margin-bottom: 70px;
 }
 
 .tabordion input[name="sections"]:checked + label { 
@@ -187,14 +216,7 @@ h1 {
 
 @media (max-width: 533px) {
   
-  h1 {
-    width: 100%;
-  }
 
-  .tabordion {
-    width: 100%;
-  }
-  
   .tabordion section label {
     font-size: 1em;
     width: 160px;
@@ -220,25 +242,6 @@ h1 {
 }
 
 
-@media (max-width: 768px) {
-  h1 {
-    width: 96%;
-  }
 
-  .tabordion {
-    width: 96%;
-  }
-}
-
-
-@media (min-width: 1366px) {
-  h1 {
-    width: 70%;
-  }
-
-  .tabordion {
-    width: 70%;
-  }
-}
   
   
