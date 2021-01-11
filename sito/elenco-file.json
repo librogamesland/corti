@@ -66,7 +66,22 @@
     ]
   },
   "2014": {
-    "corti": [],
+    "corti": [
+      "01-Guerre-Civili.pdf",
+      "02-Il-Prescelto.pdf",
+      "03-La-Lacrima-di-Nyxator.pdf",
+      "04-Sull'orlo-del-buco.pdf",
+      "05-Cuore-di-cane.pdf",
+      "06-Il-Guardiano.pdf",
+      "07-Prede-e-Cacciatori.pdf",
+      "07-Prede-e-cacciatori-(Scheda-Personaggio).pdf",
+      "08-Vita-da-cani.pdf",
+      "09-Liberami,-disse-l'uomo.pdf",
+      "10-Il-Consiglio-dei-topi.pdf",
+      "11-Lo-spettacolo-di-Lionardo.pdf",
+      "12-Sangue-e-intrighi-alla-corte-di-Aquisgrana.pdf",
+      "13-Tanis.pdf"
+    ],
     "files": [
       "libro.pdf"
     ]
@@ -82,6 +97,7 @@
       "07-In-cerca-davventura.pdf",
       "08-E-venne-il-giorno.pdf",
       "09-Fantasmi.pdf",
+      "10-La-triade-dei-ludi-infernali.pdf",
       "11-La-locanda-nella-foresta.pdf",
       "12-Trappola-nella-nebbia.pdf",
       "13-Legami-di-sangue.pdf"
@@ -113,14 +129,18 @@
   "2017": {
     "corti": [
       "01-Cuore-di-Ferro.pdf",
+      "02-Oniryca.pdf",
       "03-Sistema-Enigma-Londra.pdf",
       "04-Apocalisse.pdf",
       "05-Il-Palazzinaro.pdf",
       "06-La-Prova-della-Negromante.pdf",
       "07-Fermate-Monna-Lisa.pdf",
       "08-Il-Senza-Pietà.pdf",
+      "09-Lucca-Goblins-&-Caves.pdf",
+      "10-Falkenstein.pdf",
       "11-Firenze-canzone-triste.pdf",
-      "12-Invasione.pdf"
+      "12-Invasione.pdf",
+      "13-Alla-Scoperta-dell'Europa-con-Cripper!.pdf"
     ],
     "files": [
       "libro.pdf"
