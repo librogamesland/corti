@@ -113,7 +113,9 @@ html,body {
 
 
 
-
+#navbar a:hover {
+  background-color: #ccc;
+}
 
 
 
@@ -143,6 +145,12 @@ h1 {
   line-height: 1em;
 
 }
+
+.zip:hover {
+  background-color: #2f6431; /* Green */
+}
+
+
 
 #archivio > * {
   width: calc(30vw + 500px) !important;
@@ -281,6 +289,11 @@ h1 {
 
   }  
   
+}
+
+
+.labels label:hover {
+  background-color: #888;
 }
 
 
