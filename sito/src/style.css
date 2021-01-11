@@ -111,11 +111,24 @@ html,body {
 }
 
 
+@media (hover: hover) {
+  #navbar a:hover {
+    background-color: #ccc;
+  }
 
+  .zip:hover {
+    background-color: #2f6431; /* Green */
+  }
+}
 
-#navbar a:hover {
+#navbar a:active {
   background-color: #ccc;
 }
+
+.zip:active {
+  background-color: #2f6431; /* Green */
+}
+
 
 
 
@@ -146,9 +159,7 @@ h1 {
 
 }
 
-.zip:hover {
-  background-color: #2f6431; /* Green */
-}
+
 
 
 
