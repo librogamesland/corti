@@ -10,6 +10,10 @@ var params = {
     wait: 2000, // Waits for all changes, before reloading. Defaults to 0 sec.
 };
 
+console.log('executing: npm run build');
+childProcess.execSync(`cd ${__dirname}; npm run build`);
+
+
 liveServer.start(params);
 liveServer.watcher.on('change', function(e){
     if(e.indexOf('/dist/')==-1){

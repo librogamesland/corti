@@ -168,7 +168,7 @@ html,body {
 
 
 .zip:active {
-  background-color: #173118; /* Green */
+  background-color: #0d1d0e; /* Green */
 }
 
 
@@ -399,7 +399,7 @@ h1 {
   }
 
   #home {
-    background-color: rgb(26, 26, 26);
+    background-color: rgb(15, 15, 15);
     color: #fff;
   }
 
@@ -408,17 +408,17 @@ h1 {
   } 
 
   a {
-    color: #3493ff
+    color: #57a5ff
   }
 
   #archivio {
-    background-color: #111;
+    background-color: #000;
     color: #fff;
   }
 
   #archivio tr:nth-child(even){background-color: rgb(27, 27, 27);}
 
-  #archivio tr:hover {background-color: #444;}
+  #archivio tr:hover {background-color: #333;}
 
   #archivio td, #archivio th {
     border: 1px solid #444;
@@ -429,9 +429,13 @@ h1 {
     color: #fff;
     border-color: #555;
   }
+
+  .labels label:hover {
+    background-color: rgb(32, 32, 32);
+  }
     
   #footer {
-    background-color: #0a294d;
+    background-color: #051527;
   }
  
 }
