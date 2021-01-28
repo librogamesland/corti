@@ -4,9 +4,12 @@
   "description": "Sito web del concorso \"I corti di Librogame's Land\"",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel src/index.html",
-    "build": "rm -rf ./dist && node aggiorna-elenco.js && parcel build src/index.html --public-url /corti/sito/dist/ && cp ./dist/index.html ../",
+    "serve": "node serve.js",
+    "build": "node build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "watchreload": {
+    "files": "index.js"
   },
   "keywords": [
     "lgl",
@@ -17,6 +20,15 @@
   "author": "Luca Fabbian",
   "license": "UNLICENSED",
   "dependencies": {
-    "parcel": "^1.12.4"
+    "esm": "^3.2.25"
+  },
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "htmlnano": "^0.2.8",
+    "live-server": "^1.2.1",
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-watch-reload": "^1.0.3",
+    "posthtml-expressions": "^1.7.1",
+    "posthtml-modules": "^0.7.1"
   }
 }

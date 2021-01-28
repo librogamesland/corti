@@ -1,5 +1,9 @@
-const ultimeNews = `
-<h1>Chi siamo?</h1><hr>
+/* Tutti i vari testi da inserire all'interno del sito
+vengono caricati dal plugin posthtml-expression (file: posthtml.config.js) */
+
+// Messaggio home del sito
+const home = `
+<h1 class="only-desktop">Chi siamo?<hr></h1>
 <p>"I corti di <a href="http://librogame.net" target="_blank">Librogame's Land</a>" è il
 più grande concorso italiano dedicato ai racconti interattivi.</p>
 
@@ -13,10 +17,19 @@ al <b>31/01/2021</b> per consegnare le proprie opere.</p>
 <a href="https://bit.ly/corti2021" target="_blank" download>bando.pdf</a></p>
 `
 
-const archivio = `
+
+
+// Descrizione archivio
+const descrizioneArchivio = `
 L'archivio dei corti
 `
 
+
+
+// Footer
 const footer = `<p>@ 2021 Librogame's Land</p>`
 
-export {ultimeNews, archivio, footer}
+
+const {elenco, archivio} = require(__dirname + '/elenco.js')
+
+module.exports = {home, descrizioneArchivio, footer, archivio}
