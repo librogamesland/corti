@@ -157,14 +157,14 @@ html,body {
 
 @media (hover: hover) {
   .zip:hover {
-    background-color: #2f6431; /* Green */
+    background-color: #173118; /* Green */
   }
 }
 
 
 
 .zip:active {
-  background-color: #2f6431; /* Green */
+  background-color: #173118; /* Green */
 }
 
 
@@ -182,7 +182,7 @@ h1 {
 
 
 .zip {
-  background-color: #4CAF50; /* Green */
+  background-color: #2d6630; /* Green */
   border: none;
   color: white;
   padding: 15px 24px;

@@ -23,7 +23,7 @@ fs.readdirSync(rootFolder).filter(anno => anno.startsWith('2') ).forEach(anno =>
 
 
 const archivio = 
-'<select class="only-mobile" onchange="document.getElementById(this.value).checked = true">' +
+'<select aria-label="Seleziona edizione" class="only-mobile" onchange="document.getElementById(this.value).checked = true">' +
 Object.keys(elenco).sort().reverse().map( (key, i) => 
   `<option value="option${key}">Edizione ${key}</option>`
 ).join('/n') + '</select>' +
@@ -40,16 +40,16 @@ Object.keys(elenco).sort().reverse().map( (key,i) =>
     <h2 class="only-desktop">Edizione ${key}</h2>
     <table style="margin-bottom: 20px">
     ${!(elenco[key].files.includes('libro.pdf')) ? '' :
-    `<tr><td><a href="${baseUrl + key + '/libro.pdf'}" target="_blank">Libro dei corti ${key}</a></td></tr>`  
+    `<tr><td><a href="${baseUrl + key + '/libro.pdf'}"  rel="noopener" target="_blank">Libro dei corti ${key}</a></td></tr>`  
     }
 
     ${!(elenco[key].files.includes('bando.pdf')) ? '' :
-    `<tr><td><a href="${baseUrl + key + '/bando.pdf'}" target="_blank">Bando edizione ${key}</a></td></tr>`  
+    `<tr><td><a href="${baseUrl + key + '/bando.pdf'}"  rel="noopener" target="_blank">Bando edizione ${key}</a></td></tr>`  
     }
     </table>
     ${!('corti' in elenco[key]) ? '' : `<table>${
       elenco[key].corti.map(corto => 
-        `<tr><td><a href="${baseUrl + key + '/corti/' + corto}" target="_blank">${corto}</a></td></tr>`  
+        `<tr><td><a href="${baseUrl + key + '/corti/' + corto}"  rel="noopener" target="_blank">${corto}</a></td></tr>`  
       ).join('\n')
     } </table>`}
   </article>
