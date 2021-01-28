@@ -9,7 +9,7 @@ html,body {
 }
 
 .page {
-  padding-top: 9.5vh;
+  padding-top: 1.2rem;
   padding-bottom: 12vh;
   padding-left: 45px;
   padding-right: 45px;
@@ -32,8 +32,9 @@ html,body {
 
 @media screen and (orientation:landscape) and (min-width: 800px) { 
   .page {
+    padding-top: 9.5vh;
     padding-bottom: 5vh;
-    min-height: 90vh;
+    min-height: 85.5vh;
   }
 }
 
