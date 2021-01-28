@@ -6,6 +6,7 @@ const cssnano = require('cssnano')
 const posthtml= require('posthtml')
 const htmlnano= require('htmlnano')
 
+require = require("esm")(module)
 
 
 const dist = path.join(__dirname, 'dist')

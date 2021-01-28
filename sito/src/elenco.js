@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path= require('path')
+import fs from 'fs'
+import path from 'path'
 
 
 const baseUrl="https://librogamesland.github.io/corti/"
@@ -7,7 +7,7 @@ const baseUrl="https://librogamesland.github.io/corti/"
 
 // Elenca le edizioni
 const elenco = {}
-rootFolder = path.dirname(path.dirname(__dirname))
+const rootFolder = path.dirname(path.dirname(__dirname))
 // Filtra le cartelle, prendi solo quelle che iniziano con 2
 fs.readdirSync(rootFolder).filter(anno => anno.startsWith('2') ).forEach(anno => {
     // Elenca i corti se la cartella esiste
@@ -57,4 +57,4 @@ Object.keys(elenco).sort().reverse().map( (key,i) =>
 ).join('\n') + '</div>'
 
   
-module.exports = {elenco, archivio}
+export {elenco, archivio}
