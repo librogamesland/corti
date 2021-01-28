@@ -46,6 +46,8 @@ html,body {
 }
 
 
+
+
 /* Onboarding + navbar section */
 
 #onboarding {
@@ -139,6 +141,8 @@ html,body {
 #home iframe {
     float: left;
     margin-left: 23px;
+    border:none;
+    overflow:hidden;
 }
 
 
@@ -210,7 +214,7 @@ h1 {
   width: 100%;
   font-size: 1.2rem;
   padding: 20px 10px;
-  background-color: rgb(82, 82, 82);
+  background-color: #555;
   color: #fff;
   border-radius: 4px;
 }
@@ -375,4 +379,59 @@ h1 {
   display: flex;
   flex-direction: column;
 
+}
+
+
+
+
+/* Dark theme */
+.only-dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .only-dark {
+    display: block;
+  }
+
+  .only-light {
+    display: none;
+  }
+
+  #home {
+    background-color: rgb(26, 26, 26);
+    color: #fff;
+  }
+
+  h1, h2 {
+    color: #fff;
+  } 
+
+  a {
+    color: #3493ff
+  }
+
+  #archivio {
+    background-color: #111;
+    color: #fff;
+  }
+
+  #archivio tr:nth-child(even){background-color: rgb(27, 27, 27);}
+
+  #archivio tr:hover {background-color: #444;}
+
+  #archivio td, #archivio th {
+    border: 1px solid #444;
+  }
+
+  .tabordion .labels label {
+    background-color: rgb(54, 54, 54);
+    color: #fff;
+    border-color: #555;
+  }
+    
+  #footer {
+    background-color: #0a294d;
+  }
+ 
 }
