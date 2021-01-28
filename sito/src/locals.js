@@ -1,5 +1,7 @@
 /* Tutti i vari testi da inserire all'interno del sito
 vengono caricati dal plugin posthtml-expression (file: posthtml.config.js) */
+import {elenco, archivio} from './elenco.js'
+
 
 // Messaggio home del sito
 const home = `
@@ -18,18 +20,15 @@ al <b>31/01/2021</b> per consegnare le proprie opere.</p>
 `
 
 
-
 // Descrizione archivio
 const descrizioneArchivio = `
 L'archivio dei corti
 `
 
 
-
 // Footer
 const footer = `<p>@ 2021 Librogame's Land</p>`
 
 
-const {elenco, archivio} = require(__dirname + '/elenco.js')
 
-module.exports = {home, descrizioneArchivio, footer, archivio}
+export {home, descrizioneArchivio, footer, archivio}

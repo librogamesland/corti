@@ -70,6 +70,7 @@ html,body {
 }
 
 #navbar {
+  user-select: none;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -186,6 +187,7 @@ h1 {
 
 
 .zip {
+  user-select: none;
   background-color: #2d6630; /* Green */
   border: none;
   color: white;
@@ -279,6 +281,7 @@ h1 {
   float: right;
 }
 .tabordion .labels label {
+  user-select: none;
   background: #ccc;
   border:1px solid #fff;
   cursor: pointer;
@@ -331,7 +334,7 @@ h1 {
   background-color: #888;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 800px), print {
   #archivio > * {
     width: 100% !important;
   }
@@ -399,7 +402,7 @@ h1 {
   }
 
   #home {
-    background-color: rgb(15, 15, 15);
+    background-color: rgb(20, 20, 20);
     color: #fff;
   }
 
@@ -408,7 +411,7 @@ h1 {
   } 
 
   a {
-    color: #57a5ff
+    color: #65adff
   }
 
   #archivio {
@@ -435,7 +438,34 @@ h1 {
   }
     
   #footer {
-    background-color: #051527;
+    background-color: #071b33;
+  }
+
+
+  ::selection {
+    background: #3f90ee; /* WebKit/Blink Browsers */
+    color: #000;
+  }
+
+  ::-moz-selection {
+    background: #3f90ee; /* Gecko Browsers */
+    color: #000;
   }
  
+}
+
+
+@media print{    
+  #home {
+    page-break-after: always;
+  }
+
+  #navbar, .labels, .zip, select, iframe{
+    display: none !important;
+  }
+
+  article {
+    display: inline-block !important;
+    page-break-after: always;
+  }
 }
