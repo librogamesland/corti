@@ -139,13 +139,17 @@ html,body {
     background-color: #f1f1f1;
 }
 
-#home iframe {
+#home #social {
     float: left;
     margin-left: 23px;
     border:none;
-    overflow:hidden;
+    display: block;
+    width: 403px;
 }
 
+iframe {
+  margin-bottom: 15px;
+}
 
 
 
