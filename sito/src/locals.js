@@ -11,11 +11,10 @@ più grande concorso italiano dedicato ai racconti interattivi.</p>
 
 <p>Gestito dalla community con il supporto delle case editrici del settore, il concorso consente agli autori
 di sfidarsi su un tema che cambia di anno in anno, sottoponendo i propri racconti brevi e brevissimi al giudizio
-del pubblico.</p>
+del pubblico. Attualmente è in corso la <b>13sima edizione</b> del concorso.</p>
 
-<p>Attualmente è in corso la <b>13sima edizione</b> del concorso. Gli autori hanno tempo fino 
-al <b>31/01/2021</b> per consegnare le proprie opere.</p>
-<p>Bando con le istruzioni su come partecipare:
+<p>A partire da giovedì <b>4 febbraio</b>, sarà possibile scaricare i 29 racconti in gara quest'anno.</p>
+<p>Bando edizione 2021:
 <a href="https://bit.ly/corti2021"  rel="noopener" target="_blank" download>bando.pdf</a></p>
 `
 
