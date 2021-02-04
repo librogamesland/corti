@@ -139,17 +139,13 @@ html,body {
     background-color: #f1f1f1;
 }
 
-#home #social {
+#home iframe {
     float: left;
     margin-left: 23px;
     border:none;
-    display: block;
-    width: 403px;
+    overflow:hidden;
 }
 
-iframe {
-  margin-bottom: 15px;
-}
 
 
 
@@ -161,35 +157,6 @@ iframe {
     padding-bottom: 5vh;
   }
 
-}
-
-.download {
-  background-color: #993232; /* Green */
-}
-@media (hover: hover) {
-  .download:hover {
-    background-color: #611f1f; /* Green */
-  }
-}
-
-.download:active {
-  background-color: #4b1818; /* Green */
-}
-
-
-
-.zip {
-  background-color: #2d6630; /* Green */
-  margin-left: 1.3em;
-}
-@media (hover: hover) {
-  .zip:hover {
-    background-color: #173118; /* Green */
-  }
-}
-
-.zip:active {
-  background-color: #0d1d0e; /* Green */
 }
 
 
@@ -220,8 +187,6 @@ h1 {
   line-height: 1em;
 
 }
-
-
 
 
 
@@ -480,7 +445,7 @@ h1 {
     page-break-after: always;
   }
 
-  #navbar, .labels, .button, select, iframe{
+  #navbar, .labels, .zip, select, iframe{
     display: none !important;
   }
 
@@ -488,4 +453,34 @@ h1 {
     display: inline-block !important;
     page-break-after: always;
   }
+}
+
+.download {
+  background-color: #993232; /* Green */
+  max-width: 85vw !;
+}
+@media (hover: hover) {
+  .download:hover {
+    background-color: #611f1f; /* Green */
+  }
+}
+
+.download:active {
+  background-color: #4b1818; /* Green */
+}
+
+
+
+.zip {
+  background-color: #2d6630; /* Green */
+  margin-left: 1.3em;
+}
+@media (hover: hover) {
+  .zip:hover {
+    background-color: #173118; /* Green */
+  }
+}
+
+.zip:active {
+  background-color: #0d1d0e; /* Green */
 }
