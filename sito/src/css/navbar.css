@@ -1,0 +1,49 @@
+#navbar {
+  user-select: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  padding-left: calc((70vw - 496px) / 2);
+}
+
+@media only screen and (max-width: 800px) {
+  #navbar {
+    padding: 0 40px;
+  }
+}
+
+#navbar li {
+  float: left;
+}
+
+#navbar a {
+  display: block;
+  color: white;
+  text-align: center;
+  line-height: 30px;
+  padding: 21px 18px;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+@media only screen and (max-width: 415px) {
+  #navbar {
+    padding: 0 15px;
+  }
+
+  #navbar a {
+    font-size: 18px;
+  }
+}
+
+#navbar a:active {
+  background-color: #111;
+}
+
+@media (hover: hover) {
+  #navbar a:hover {
+    background-color: #111;
+  }
+}
