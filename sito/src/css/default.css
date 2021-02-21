@@ -1,0 +1,54 @@
+
+html,body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: arial, sans-serif;
+  font-size: 110%;
+}
+
+
+.page {
+  padding-top: 1.2rem;
+  padding-bottom: 12vh;
+  padding-left: 45px;
+  padding-right: 45px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 800px) {
+  .only-desktop {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .only-mobile {
+    display: none !important;
+  }
+}
+
+@media screen and (orientation:landscape) and (min-width: 800px) { 
+  .page {
+    padding-top: 9.5vh;
+    padding-bottom: 5vh;
+    min-height: 85.5vh;
+  }
+}
+
+@media only screen and (max-width: 415px) {
+  .page {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+h1 {
+  color: #333;
+  font-family: arial, sans-serif;
+  margin: 0.5em 0px 1em;
+  line-height: 1em;
+  vertical-align: middle;
+}

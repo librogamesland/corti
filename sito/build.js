@@ -1,10 +1,11 @@
 const fs = require('fs')
 const path = require('path')
 
-const postcss = require('postcss')
-const cssnano = require('cssnano')
-const posthtml= require('posthtml')
-const htmlnano= require('htmlnano')
+const postcss  = require('postcss')
+const cssnano  = require('cssnano')
+const atImport = require("postcss-import")
+const posthtml = require('posthtml')
+const htmlnano = require('htmlnano')
 
 require = require("esm")(module)
 
@@ -17,7 +18,7 @@ if (!fs.existsSync(dist)){
 
 // Process css
 fs.readFile('src/style.css', (err, css) => {
-  postcss([cssnano])
+  postcss([atImport, cssnano])
     .process(css, { from: 'src/style.css', to: 'dist/style.css' })
     .then(result => {
       fs.writeFile('dist/style.css', result.css, () => true)

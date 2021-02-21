@@ -13,9 +13,9 @@ più grande concorso italiano dedicato ai racconti interattivi.</p>
 di sfidarsi su un tema che cambia di anno in anno, sottoponendo i propri racconti brevi e brevissimi al giudizio
 del pubblico. Attualmente è in corso la <b>13sima edizione</b> del concorso.</p>
 
-<h1><a class="button download" style="width:100%; box-sizing:border-box" href="https://bit.ly/corti2021download" rel="noopener" target="_blank" download>Dowload corti 2021</a></h1>
-</h1><p>Sarà possibile votare dal <b>22 febbraio</b> fino al <b>30 Aprile</b> sulla pagina Facebook o, in alternativa, sul Forum di LGL.
-Bando edizione 2021:
+<h1><a class="button download" style="width:100%; box-sizing:border-box" href="https://bit.ly/corti2021download" rel="noopener" target="_blank" download>Download corti 2021 + soluzioni</a></h1>
+</h1><p>È possibile <b>recensire e votare i corti fino al 30 aprile</b> sulla pagina Facebook apposita o, in alternativa, sul Forum di LGL.
+</p><p>Bando edizione 2021:
 <a href="https://bit.ly/corti2021"  rel="noopener" target="_blank" download>bando.pdf</a></p>
 `
 

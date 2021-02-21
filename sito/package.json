@@ -21,5 +21,9 @@
     "live-server": "^1.2.1",
     "posthtml-expressions": "^1.7.1",
     "esm": "^3.2.25"
+  },
+  "dependencies": {
+    "postcss": "^8.2.6",
+    "postcss-import": "^14.0.0"
   }
 }

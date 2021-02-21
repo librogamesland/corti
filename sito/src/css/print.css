@@ -1,0 +1,17 @@
+
+
+@media print{    
+  #home {
+    page-break-after: always;
+  }
+
+  #navbar, .labels, .zip, select, iframe{
+    display: none !important;
+  }
+
+  article {
+    display: inline-block !important;
+    page-break-after: always;
+  }
+}
+
