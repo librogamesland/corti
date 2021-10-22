@@ -55,7 +55,6 @@ const votazioni = {
 
 
 const voteButton = (edizione, corto) => { 
-  if(edizione != '2021') return ""
   if(! (corto in votazioni)) return ""
   return `<a href="${votazioni[corto]}" class="button vote" rel="noopener" target="_blank">Vota<img src="sito/res/link.svg" alt="(link esterno)"height="12px" style="margin-left: 7px;"></a>`
 }
