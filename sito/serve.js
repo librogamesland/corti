@@ -22,6 +22,6 @@ liveServer.watcher.on('change', function(e){
         try { 
             childProcess.execSync(`cd ${__dirname}; npm run build --silent`);
             console.log("DONE!")
-        }catch(e){ console.error("\x1b[31m\nERROR DURING npm run build\n\x1b[0m")}
+        }catch(e){ console.error("\x1b[31m\nERROR DURING npm run build\n\x1b[0m", e)}
     }
 })
