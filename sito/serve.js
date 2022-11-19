@@ -1,8 +1,8 @@
-var liveServer = require("live-server");
-var childProcess = require('child_process');
+const liveServer = require("live-server");
+const childProcess = require('child_process');
 
 
-var params = {
+const params = {
     port: 8083, // Set the server port. Defaults to 8080.
     root: "..", // Set root directory that's being served. Defaults to cwd.
     open: true, // When false, it won't load your browser by default.
