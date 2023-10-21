@@ -12,7 +12,7 @@ più grande concorso italiano dedicato ai racconti interattivi (librogame).</p>
 <p>Gestito dalla community con il supporto delle case editrici del settore, il concorso consente agli autori
 di sfidarsi su un tema che cambia di anno in anno, sottoponendo i propri racconti brevi e brevissimi al giudizio
 del pubblico. <p>Per tutte le novità sul concorso vi rimandiamo 
-<b>alla pagina <a href="https://facebook.com/cortilgl">Facebook</a> apposita o, in alternativa, al <a href="http://www.librogame.net/index.php/forum/forum?id=15">Forum di LGL</a>.
+<b>alla pagina <a href="https://facebook.com/cortilgl">Facebook</a> apposita o in alternativa, al <a href="http://www.librogame.net/index.php/forum/forum?id=15">Forum di LGL</a>.
 </b></p>
 
 <!--
