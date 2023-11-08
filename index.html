@@ -17,10 +17,15 @@
 
   <script>
 
+    window.cachedValues = {
+      year: null,
+      archive: {}, 
+      ...JSON.parse(localStorage['lista-corti'] ?? '{}')
+    }
+
     window.listaCorti = async() => {
       const archive = {}
       const {tree} = await fetch('https://api.github.com/repos/librogamesland/corti/git/trees/main?recursive=1').then( r => r.json())
-      try {
       for(const {path} of tree){
         if(!path.startsWith('2')) continue
         const [year, file, subfile] = path.split('/')
@@ -28,11 +33,10 @@
         if(file === 'corti' && subfile){ archive[year].corti.push(subfile) }
         else{ archive[year].res.push(file) }
       }
-      console.log(archive)
       localStorage['lista-corti'] = JSON.stringify(archive)
-      return archive
-      }catch(e){
-        return JSON.parse(localStorage['lista-corti'] ?? '{}')
+      return  {
+        archive,
+        year: Object.keys(archive).sort((a,b) => b-a)[0]
       }
     }
   </script>
@@ -44,9 +48,9 @@
   </div>
   <div class="bg-[#333] text-white">
     <ul id="navbar" class="flex mx-auto max-w-4xl px-10 portrait:justify-center">
-      <li><a class="px-6 py-6 block hover:bg-black" href="#home">Home</a></li>
-      <li><a class="px-6 py-6 block hover:bg-black" href="#archivio">Archivio</a></li>
-      <li><a class="px-6 py-6 block hover:bg-black" href="http://librogame.net/index.php/forum/forum?id=15"
+      <li><a class="landscape:px-6 portrait:px-3 py-6 block hover:bg-black" href="#home">Home</a></li>
+      <li><a class="landscape:px-6 portrait:px-3 py-6 block hover:bg-black" href="#archivio">Archivio</a></li>
+      <li><a class="landscape:px-6 portrait:px-3 py-6 block hover:bg-black" href="http://librogame.net/index.php/forum/forum?id=15"
           target="_blank" rel="noopener">Forum LGL<img class="inline-block w-4" src="res/sito/link.svg"
             alt="(link esterno)" height="12px" style="margin-left: 7px;"></a></li>
     </ul>
@@ -80,13 +84,13 @@
   </div>
 
 
-  <div id="archivio" class="dark:bg-black " v-scope="{ year: '', archive: {} }"
-  v-effect="listaCorti().then( r => (archive = r, year = Object.keys(archive).sort((a,b) => b-a)[0] ))">
+  <div id="archivio" class="dark:bg-black " v-scope="{archive: cachedValues.archive, year: cachedValues.year}"
+  v-effect="listaCorti().then( result => ({archive, year} = result))">
     <div class="max-w-4xl px-10 mx-auto py-8">
       <div class="pt-12 pb-10 flex items-center portrait:flex-col">
         <h1 class="text-3xl dark:text-white">Archivio racconti</h1>
-        <a class="text-base text-white bg-green-600 hover:bg-green-800 ml-4 px-5 py-3 rounded-lg" href="https://github.com/librogamesland/corti/archive/main.zip" rel="noopener"
-        target="_blank" download>Scarica <span class="only-desktop">tutto come file</span> .zip (~150MB)</a>
+        <a class="text-base text-white bg-green-600 hover:bg-green-800 landscape:ml-4 px-5 py-3 rounded-lg" href="https://github.com/librogamesland/corti/archive/main.zip" rel="noopener"
+        target="_blank" download>Scarica <span class="hidden landscape:inline">tutto come file</span> .zip (~150MB)</a>
       </div>
       <div class="flex portrait:flex-col">
         <select class="landscape:hidden my-4 px-2 py-4 text-xl rounded-md" v-model="year">
