@@ -12,8 +12,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flyingjs@0.0.6/dist/flying.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/flyingjs@0.0.6/dist/flying.min.js" mount></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flyingjs@0.0.7/dist/flying.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flyingjs@0.0.7/dist/flying.min.js" mount></script>
 
   <script>
 
@@ -91,9 +91,9 @@
       <div class="flex portrait:flex-col">
         {#if local.year !== null && local.archive[local.year]}
 
-        <select class="landscape:hidden my-4 px-2 py-4 text-xl rounded-md">
+        <select class="landscape:hidden my-4 px-2 py-4 text-xl rounded-md" @change="${ (e) => local.year = e.target.value}">
           {#for anno of Object.keys(local.archive).sort((a,b) => b-a)}
-            <option value="{{anno}}">Edizione {{anno}}</option>
+            <option value="{{anno}}" selected="{{anno == local.year}}">Edizione {{anno}}</option>
           {/for}
         </select>
         <div class="portrait:hidden mr-8">
