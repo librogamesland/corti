@@ -40,8 +40,8 @@
 </head>
 
 <body runcss-cloak>
-  <div style="background-image:url(res/sito/background.jpg); background-repeat:repeat; background-position: center top;">
-    <img class="max-h-52 mx-auto p-10" src="res/sito/banner.png" alt="I Corti di LGL - Concorso di narrativa a bivi">
+  <div style="background-image:url(res/sito/background.webp); background-repeat:repeat; background-position: center top;">
+    <img class="max-h-52 mx-auto p-10" src="res/sito/banner.webp" alt="I Corti di LGL - Concorso di narrativa a bivi">
   </div>
   <div class="bg-[#333] text-white">
     <ul id="navbar" class="flex mx-auto max-w-4xl px-10 portrait:justify-center">
@@ -91,9 +91,9 @@
       <div class="flex portrait:flex-col">
         {#if local.year !== null && local.archive[local.year]}
 
-        <select class="landscape:hidden my-4 px-2 py-4 text-xl rounded-md" @change="${ (e) => local.year = e.target.value}">
+        <select class="landscape:hidden my-4 px-2 py-4 text-xl rounded-md" @change="${(e) => local.year = e.target.value}" value="{{local.year}}">
           {#for anno of Object.keys(local.archive).sort((a,b) => b-a)}
-            <option value="{{anno}}" selected="{{anno == local.year}}">Edizione {{anno}}</option>
+            <option value="{{anno}}">Edizione {{anno}}</option>
           {/for}
         </select>
         <div class="portrait:hidden mr-8">
