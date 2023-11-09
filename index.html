@@ -12,18 +12,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flyingjs/dist/flying.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/flyingjs/dist/flying.min.js" defer load></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flyingjs@0.0.6/dist/flying.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flyingjs@0.0.6/dist/flying.min.js" mount></script>
 
   <script>
 
-    window.cachedValues = {
+    window.local = persistent('corti-list',{
       year: null,
       archive: {}, 
-      ...JSON.parse(localStorage['lista-corti'] ?? '{}')
-    }
+    })
 
-    window.listaCorti = async() => {
+    ;(async() => {
       const archive = {}
       const {tree} = await fetch('https://api.github.com/repos/librogamesland/corti/git/trees/main?recursive=1').then( r => r.json())
       for(const {path} of tree){
@@ -33,16 +32,14 @@
         if(file === 'corti' && subfile){ archive[year].corti.push(subfile) }
         else{ archive[year].res.push(file) }
       }
-      localStorage['lista-corti'] = JSON.stringify(archive)
-      return  {
-        archive,
-        year: Object.keys(archive).sort((a,b) => b-a)[0]
-      }
-    }
+      local.archive = archive
+      if(local.year === null) local.year = Object.keys(archive).sort((a,b) => b-a)[0]
+    })()
+
   </script>
 </head>
 
-<body v-scope>
+<body runcss-cloak>
   <div style="background-image:url(res/sito/background.jpg); background-repeat:repeat; background-position: center top;">
     <img class="max-h-52 mx-auto p-10" src="res/sito/banner.png" alt="I Corti di LGL - Concorso di narrativa a bivi">
   </div>
@@ -84,8 +81,7 @@
   </div>
 
 
-  <div id="archivio" class="dark:bg-black " v-scope="{archive: cachedValues.archive, year: cachedValues.year}"
-  v-effect="listaCorti().then( result => ({archive, year} = result))">
+  <div id="archivio" class="dark:bg-black ">
     <div class="max-w-4xl px-10 mx-auto py-8">
       <div class="pt-12 pb-10 flex items-center portrait:flex-col">
         <h1 class="text-3xl dark:text-white">Archivio racconti</h1>
@@ -93,40 +89,46 @@
         target="_blank" download>Scarica <span class="hidden landscape:inline">tutto come file</span> .zip (~150MB)</a>
       </div>
       <div class="flex portrait:flex-col">
-        <select class="landscape:hidden my-4 px-2 py-4 text-xl rounded-md" v-model="year">
-          <option v-for="anno in Object.keys(archive).sort((a,b) => b-a)"
-          :value="anno">Edizione {{anno}}</option>
+        {#if local.year !== null && local.archive[local.year]}
+
+        <select class="landscape:hidden my-4 px-2 py-4 text-xl rounded-md">
+          {#for anno of Object.keys(local.archive).sort((a,b) => b-a)}
+            <option value="{{anno}}">Edizione {{anno}}</option>
+          {/for}
         </select>
         <div class="portrait:hidden mr-8">
-          <button class="pl-8 pr-20 py-2 block hover:bg-gray-400 bg-[#ccc] dark:bg-gray-800 dark:hover:bg-gray-700 mb-[3px] font-bold text-gray-800 dark:text-white text-xl"
-          v-for="anno in Object.keys(archive).sort((a,b) => b-a)"
-          @click="year = anno">
-            {{ anno }}
-          </button>
+          {#for anno of Object.keys(local.archive).sort((a,b) => b-a)}
+            <button class="pl-8 pr-20 py-2 block hover:bg-gray-400 bg-[#ccc] dark:bg-gray-800 dark:hover:bg-gray-700 mb-[3px] font-bold text-gray-800 dark:text-white text-xl"
+            @click="{{local.year = anno}}">
+              {{ anno }}
+            </button>
+          {/for}
         </div>
-        <div v-if="year !== '' && archive[year]" class="w-full">
-          <h1 class="text-2xl font-bold mb-4 portrait:hidden dark:text-white">Edizione {{year}}</h1>
+        <div class="w-full">
+            <h1 class="text-2xl font-bold mb-4 portrait:hidden dark:text-white">Edizione {{local.year}}</h1>
+            {#if local.archive[local.year].res.includes('libro.pdf')}
+              <a class="block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800 mb-4"
+              href="{{`https://librogamesland.github.io/corti/${local.year}/libro.pdf`}}" target="_blank" rel="noopener"
+              >Libro dei corti {{local.year}}</a>
+            {/if}
 
-          <a v-if="archive[year].res.includes('libro.pdf')"
-          class="block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800 mb-4"
-          :href="`https://librogamesland.github.io/corti/${year}/libro.pdf`" target="_blank" rel="noopener"
-          >Libro dei corti {{year}}</a>
+            {#if local.archive[local.year].res.includes('bando.pdf')}
+              <a class="block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800 mb-4"
+              href="{{`https://librogamesland.github.io/corti/${local.year}/bando.pdf`}}" target="_blank" rel="noopener"
+              >Bando edizione {{local.year}}</a>
+            {/if}
 
-          <a v-if="archive[year].res.includes('bando.pdf')"
-          class="block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800 mb-4"
-          :href="`https://librogamesland.github.io/corti/${year}/bando.pdf`" target="_blank" rel="noopener"
-          >Bando edizione {{year}}</a>
-
-          <a class="block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800"
-          v-for="corto in archive[year].corti"  
-          target="_blank" rel="noopener"
-          :href="`https://librogamesland.github.io/corti/${year}/corti/${corto}`">
-          {{corto}}
-          </a>
+            {#for corto of local.archive[local.year].corti}
+              <a class="block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800"
+              target="_blank" rel="noopener"
+              href="{{`https://librogamesland.github.io/corti/${local.year}/corti/${corto}`}}">
+              {{corto}}
+              </a>
+            {/for}
         </div>
         
       </div>
-
+      {/if}
 
     </div>
   </div>
