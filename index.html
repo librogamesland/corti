@@ -11,39 +11,6 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/runcss/dist/runcss.min.css">
   <script src="https://cdn.jsdelivr.net/npm/runcss/dist/runcss.min.js" defer watch></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-  <script>
-    window.local ={
-      year: null,
-      archive: {}, 
-    }
-
-    // carica lista dei file dalla cache e li rende "reattivi"
-    document.addEventListener('alpine:init', () => {
-      const key = 'corti-list'
-      window.local = Alpine.reactive({
-        ...window.local,
-        ...JSON.parse(localStorage[key] ?? '{}')
-      })
-      Alpine.effect( () => localStorage[key] = JSON.stringify(window.local))
-    })
-
-    // scarica lista dei file attuali da github
-    ;(async() => {
-      const archive = {}
-      const {tree} = await fetch('https://api.github.com/repos/librogamesland/corti/git/trees/main?recursive=1').then( r => r.json())
-      for(const {path} of tree){
-        if(!path.startsWith('2')) continue
-        const [year, file, subfile] = path.split('/')
-        if(!(year in archive)) archive[year] = {corti: [], res: []}
-        if(file === 'corti' && subfile){ archive[year].corti.push(subfile) }
-        else{ archive[year].res.push(file) }
-      }
-      local.archive = archive
-      if(local.year === null) local.year = Object.keys(archive).sort((a,b) => b-a)[0]
-    })()
-  </script>
 </head>
 
 <body runcss-cloak>
@@ -95,49 +62,85 @@
         <a class="text-base text-white bg-green-600 hover:bg-green-800 landscape:ml-4 px-5 py-3 rounded-lg" href="https://github.com/librogamesland/corti/archive/main.zip" rel="noopener"
         target="_blank" download>Scarica <span class="hidden landscape:inline">tutto come file</span> .zip (~250MB)</a>
       </div>
-      <template x-if="local.year !== null && local.archive[local.year]">
-        <div class="flex portrait:flex-col">
-
-          <select class="landscape:hidden my-4 px-2 py-4 text-xl rounded-md" x-model="local.year">
-            <template x-for="anno in Object.keys(local.archive).sort((a,b) => b-a)">
-              <option :value="anno" x-text="'Edizione ' + anno"></option>
-            </template>
-          </select>
-          <div class="portrait:hidden mr-8">
-            <template x-for="anno of Object.keys(local.archive).sort((a,b) => b-a)">
-              <button class="pl-8 pr-20 py-2 block hover:bg-gray-400 bg-[#ccc] dark:bg-gray-800 dark:hover:bg-gray-700 mb-[3px] font-bold text-gray-800 dark:text-white text-xl"
-              @click="local.year = anno" x-text="anno"></button>
-            </template>
-          </div>
-          <div class="w-full">
-              <h1 class="text-2xl font-bold mb-4 portrait:hidden dark:text-white" x-text="'Edizione ' + local.year"></h1>
-              <template x-if="local.archive[local.year].res.includes('libro.pdf')">
-                <a class="block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800 mb-4"
-                :href="`https://librogamesland.github.io/corti/${local.year}/libro.pdf`" target="_blank" rel="noopener"
-                x-text="'Libro dei corti ' + local.year"></a>
-              </template>
-
-              <template x-if="local.archive[local.year].res.includes('bando.pdf')">
-                <a class="block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800 mb-4"
-                :href="`https://librogamesland.github.io/corti/${local.year}/bando.pdf`" target="_blank" rel="noopener"
-                x-text="'Bando edizione ' + local.year"></a>
-              </template>
-
-
-              <template x-for="corto in local.archive[local.year].corti">
-                <a class="block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800"
-                target="_blank" rel="noopener"
-                :href="`https://librogamesland.github.io/corti/${local.year}/corti/${corto}`" x-text="corto"></a>
-              </template>
-          </div>
-          
-        </div>
-      </template>
-
+        <div class="flex portrait:flex-col" id="lista-corti"></div>
     </div>
   </div>
   <div id="footer" class="bg-[#155cac] pt-14 pb-16 text-white flex">
     <p class="mx-auto">@ 2021 Librogame's Land</p>
   </div>
+  
+  <script>
+    // carica i dati sulla lista corti dalla cache locale 
+    const key = 'corti-list'
+    window.local =JSON.parse(localStorage[key] ?? JSON.stringify({year: null, archive: {}}))
+    
+    // ricrea l'elemento lista-corti
+    const refresh = () =>  {
+      if(local.year === null) return
+      document.getElementById('lista-corti').innerHTML = `
+
+        <select class="landscape:hidden my-4 px-2 py-4 text-xl rounded-md" onchange="updateAnno(this.value)">
+          ${Object.keys(local.archive).sort((a,b) => b-a).map(anno => 
+            `<option value="${anno}" ${anno == local.year ? 'selected' : ''}>Edizione ${anno}</option>`
+          ).join('')}
+        </select>
+
+        <div class="portrait:hidden mr-8">
+          ${Object.keys(local.archive).sort((a,b) => b-a).map(anno => `
+            <button class="pl-8 pr-20 py-2 block hover:bg-gray-400 bg-[#ccc] dark:bg-gray-800 dark:hover:bg-gray-700 mb-[3px] font-bold text-gray-800 dark:text-white text-xl"
+            onclick="updateAnno(${anno})">${anno}</button>
+          `).join('')}
+        </div> 
+        
+        <div class="w-full">
+          <h1 class="text-2xl font-bold mb-4 portrait:hidden dark:text-white">Edizione ${local.year}</h1>
+
+          ${ local.archive[local.year].res.includes('libro.pdf') ? `
+            <a class="block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800 mb-4"
+            href="https://librogamesland.github.io/corti/${local.year}/libro.pdf" target="_blank" rel="noopener"
+            >Libro dei corti ${local.year}</a>
+          ` : ''}
+
+          ${ local.archive[local.year].res.includes('bando.pdf') ? `
+            <a class="block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800 mb-4"
+            href="https://librogamesland.github.io/corti/${local.year}/bando.pdf" target="_blank" rel="noopener"
+            >Bando edizione ${local.year}</a>
+          ` : ''}
+
+          ${ local.archive[local.year].corti.map(corto => `
+              <a class="block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800"
+              target="_blank" rel="noopener"
+              href="https://librogamesland.github.io/corti/${local.year}/corti/${corto}">${corto}</a>
+          `).join('')}
+        </div>
+        `
+    }
+
+    // aggiorna l'anno selezionato
+    window.updateAnno = (anno) => {
+      local.year = anno
+      localStorage[key] = JSON.stringify(local)
+      refresh()
+    } 
+
+    // scarica la lista dei corti da github, e aggiorna il sito
+    const main = async() => {
+      refresh()
+      const {tree} = await fetch('https://api.github.com/repos/librogamesland/corti/git/trees/main?recursive=1').then( r => r.json())
+      const archive = {}
+      for(const {path} of tree){
+        if(!path.startsWith('2')) continue
+        const [year, file, subfile] = path.split('/')
+        if(!(year in archive)) archive[year] = {corti: [], res: []}
+        if(file === 'corti' && subfile){ archive[year].corti.push(subfile) }
+        else{ archive[year].res.push(file) }
+      }
+      local.archive = archive
+      if(local.year === null) local.year = Object.keys(archive).sort((a,b) => b-a)[0]
+      localStorage[key] = JSON.stringify(local)
+      refresh()
+    }
+    document.addEventListener('DOMContentLoaded', main)
+  </script>
 </body>
 </html>
