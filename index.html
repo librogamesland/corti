@@ -11,11 +11,22 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/runcss/dist/runcss.min.css">
   <script src="https://cdn.jsdelivr.net/npm/runcss/dist/runcss.min.js" defer watch></script>
+  <style>
+    /* Animation for on-scroll elements */
+    .on-scroll-fade-in { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .on-scroll-fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    .on-scroll-fade { opacity: 0; transition: opacity 1.2s ease-in-out; }
+    .on-scroll-fade.visible { opacity: 1; }
+
+    .on-scroll-list>.elem { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .on-scroll-list.visible>.elem { opacity: 1; transform: translateY(0); }  
+  </style>
 </head>
 
 <body runcss-cloak>
   <div style="background-image:url(res/sito/background.webp); background-repeat:repeat; background-position: center top;">
-    <img class="max-h-52 mx-auto p-10" src="res/sito/banner.webp" alt="I Corti di LGL - Concorso di narrativa a bivi">
+    <img class="on-scroll-fade max-h-52 mx-auto p-10" src="res/sito/banner.webp" alt="I Corti di LGL - Concorso di narrativa a bivi">
   </div>
   <div class="bg-[#333] text-white">
     <ul id="navbar" class="flex mx-auto max-w-4xl px-10 portrait:justify-center">
@@ -28,8 +39,8 @@
   </div>
   <div id="about" class="bg-[#f1f1f1] dark:text-white  dark:bg-gray-950">
     <div class="max-w-4xl px-10 py-12 flex mx-auto space-x-8 portrait:pt-4">
-      <div class="space-y-5">
-
+      <div class="on-scroll-fade-in space-y-5">
+        
         <h1 class="hidden landscape:block text-4xl pb-4">Chi siamo?
           <hr>
         </h1>
@@ -47,7 +58,7 @@
         </p>
 
       </div>
-      <iframe id="social" title="Pagina Facebook dei corti" class="w-[403px] portrait:hidden" style="flex-shrink: 0;"
+      <iframe id="social" title="Pagina Facebook dei corti" class="on-scroll-fade w-[403px] portrait:hidden" style="flex-shrink: 0;"
         src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FcortiLGL%2F&tabs=timeline%2Cevents%2Cmessages&width=403&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=902520256865547"
         width="403" height="600" frameborder="0" allowfullscreen="true"
         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
@@ -57,7 +68,7 @@
 
   <div id="archivio" class="dark:bg-black" x-data>
     <div class="max-w-4xl px-10 mx-auto py-8">
-      <div class="pt-12 pb-10 flex items-center portrait:flex-col">
+      <div class="pt-12 pb-10 flex items-center portrait:flex-col on-scroll-fade">
         <h1 class="text-3xl dark:text-white">Archivio racconti</h1>
         <a class="text-base text-white bg-green-600 hover:bg-green-800 landscape:ml-4 px-5 py-3 rounded-lg" href="https://github.com/librogamesland/corti/archive/main.zip" rel="noopener"
         target="_blank" download>Scarica <span class="hidden landscape:inline">tutto come file</span> .zip (~250MB)</a>
@@ -73,6 +84,25 @@
     // carica i dati sulla lista corti dalla cache locale 
     const key = 'corti-list'
     window.local =JSON.parse(localStorage[key] ?? JSON.stringify({year: null, archive: {}}))
+
+    // aggiunge le animazioni agli elementi on-scroll
+    const addAnimations = (element) => {
+      const elements = [
+        ...element.querySelectorAll(".on-scroll-fade"),
+        ...element.querySelectorAll(".on-scroll-fade-in"),
+        ...element.querySelectorAll(".on-scroll-list")
+      ];
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            } else {
+              entry.target.classList.remove("visible");
+            }
+        });
+      }, { threshold: 0 });
+      elements.forEach((el) => observer.observe(el));
+    }
     
     // ricrea l'elemento lista-corti
     const refresh = () =>  {
@@ -92,28 +122,29 @@
           `).join('')}
         </div> 
         
-        <div class="w-full">
-          <h1 class="text-2xl font-bold mb-4 portrait:hidden dark:text-white">Edizione ${local.year}</h1>
+        <div class="w-full on-scroll-list">
+          <h1 class="on-scroll-fade text-2xl font-bold mb-4 portrait:hidden dark:text-white">Edizione ${local.year}</h1>
 
           ${ local.archive[local.year].res.includes('libro.pdf') ? `
-            <a class="block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800 mb-4"
+            <a class="on-scroll-fade block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800 mb-4"
             href="https://librogamesland.github.io/corti/${local.year}/libro.pdf" target="_blank" rel="noopener"
             >Libro dei corti ${local.year}</a>
           ` : ''}
 
           ${ local.archive[local.year].res.includes('bando.pdf') ? `
-            <a class="block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800 mb-4"
+            <a class="on-scroll-fade block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800 mb-4"
             href="https://librogamesland.github.io/corti/${local.year}/bando.pdf" target="_blank" rel="noopener"
             >Bando edizione ${local.year}</a>
           ` : ''}
 
-          ${ local.archive[local.year].corti.map(corto => `
-              <a class="block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800"
-              target="_blank" rel="noopener"
+          ${ local.archive[local.year].corti.map((corto, i) => `
+              <a class="elem block text-blue-800 dark:text-blue-500 w-full py-2 px-1 rounded-md hover:bg-slate-300 hover:dark:bg-slate-800"
+              target="_blank" rel="noopener" style="transition-delay: ${Math.sqrt(i+2)*0.2}s"
               href="https://librogamesland.github.io/corti/${local.year}/corti/${corto}">${corto}</a>
           `).join('')}
         </div>
         `
+        addAnimations(document.getElementById('lista-corti'))
     }
 
     // aggiorna l'anno selezionato
@@ -140,7 +171,12 @@
       localStorage[key] = JSON.stringify(local)
       refresh()
     }
-    document.addEventListener('DOMContentLoaded', main)
+
+    document.addEventListener("DOMContentLoaded", () => {
+      addAnimations(document.body)
+      main()      
+    });
+
   </script>
 </body>
 </html>
